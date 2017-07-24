@@ -1,49 +1,15 @@
 var express = require("express");
 var app = express();
 var Sequelize = require("sequelize");
-// var passport = require("passport");
-// var bodyParser = require("body-parser");
-// var LocalStrategy = require("passport-local");
-// var passportLocalSequelize = require("passport-local-sequelize");
-// var User = require("./models/user");
+var passport = require("passport");
+var bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser");
+var session = require("express-session");
+var LocalStrategy = require("passport-local");
+var passportLocalSequelize = require("passport-local-sequelize");
+var User = require("./models/user");
 
 app.set("view engine", "ejs");
-
-// ******* Postgres Connection ********
-var sequelize = new Sequelize("authdemo", process.env.PGUSER, process.env.PGPASSWORD, {
-	host: process.env.PGHOST,
-	dialect: "postgres",
-	port: process.env.PGPORT,
-	pool: {
-	 max: 5,
-	 min: 0,
-	 idle: 10000
- }
-});
-
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("Connection has been established successfully.");
-  })
-  .catch(err => {
-    console.error("Unable to connect to the database:", err);
-  });
-
-// ******* Postgres Model ********
-var User = sequelize.define("user", {
-	username: Sequelize.STRING,
-	password: Sequelize.STRING
-});
-
-User.create({
-	username: "test",
-	password: "test"
-});
-
-// Create table in database if not exists
-sequelize.sync();
-
 
 
 // app.use(bodyParser.urlencoded({extended: true}));
