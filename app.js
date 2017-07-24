@@ -11,7 +11,7 @@ var User = require("./models/user");
 // var LocalStrategy = require("passport-local");
 
 app.set("view engine", "ejs");
-
+require('dotenv').config()
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(require("express-session")({
