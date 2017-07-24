@@ -23,37 +23,21 @@ sequelize
   });
 
 // ******* Postgres Model ********
-var User = passportLocalSequelize.defineUser("user", {
+var User = sequelize.define("user", {
 	username: Sequelize.STRING,
-	password: Sequelize.STRING
+	myhash: Sequelize.TEXT,
+	mysalt: Sequelize.STRING
+});
+
+// Activate passport-local-sequelize
+passportLocalSequelize.attachToUser(User, {
+    usernameField: 'username',
+    hashField: 'myhash',
+    saltField: 'mysalt'
 });
 
 // Create table in database if not exists
 sequelize.sync();
 
-
-
-
-
-// A helper to define the User model with username, password fields
-var User = passportLocalSequelize.defineUser(mydb, {
-    favoriteColor: Sequelize.STRING
-});
-
-// --- OR ---
-
-// Define a User yourself and use attachToUser
-
-var User = mydb.define('User', {
-    nick: Sequelize.STRING,
-    myhash: Sequelize.STRING,
-    mysalt: Sequelize.STRING
-});
-
-passportLocalSequelize.attachToUser(User, {
-    usernameField: 'nick',
-    hashField: 'myhash',
-    saltField: 'mysalt'
-});
 
 module.exports = User;
