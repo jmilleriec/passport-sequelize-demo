@@ -2,7 +2,7 @@
   "name": "passport-sequelize-demo",
   "version": "1.0.0",
   "main": "app.js",
-  "repository": "http",
+  "repository": "https://github.com/niamurrell/passport-sequelize-demo",
   "author": "Nia",
   "license": "MIT",
   "dependencies": {
