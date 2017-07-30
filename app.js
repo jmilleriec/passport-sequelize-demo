@@ -74,6 +74,7 @@ function isLoggedIn(req, res, next) {
   res.redirect("/login");
 }
 
-app.listen(3000, function(req, res) {
-  console.log("App on port 3000");
+app.set('port', (process.env.PORT || 3000));
+app.listen(app.get('port'), function(req, res) {
+  console.log("App on port ", app.get('port'));
 });
