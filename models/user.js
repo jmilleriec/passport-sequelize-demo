@@ -2,7 +2,7 @@ var Sequelize = require("sequelize");
 var passportLocalSequelize = require("passport-local-sequelize");
 
 // ******* Postgres Connection ********
-var sequelize = new Sequelize("authdemo", process.env.PGUSER, process.env.PGPASSWORD, {
+var sequelize = new Sequelize(process.env.PGDATABASE, process.env.PGUSER, process.env.PGPASSWORD, {
 	host: process.env.PGHOST,
 	dialect: "postgres",
 	port: process.env.PGPORT,
